@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+
+  table {
+    td {
+      border: 1px solid black;
+      font-size: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+
+      &:nth-child(3n+1) {
+        border-left: 2px solid black;
+      }
+      &:nth-child(3n) {
+        border-right: 2px solid black;
+      }
+    }
+
+    tr {
+      &:nth-child(3n+1) td {
+        border-top: 2px solid black;
+      }
+      &:nth-child(3n) td {
+        border-bottom: 2px solid black;
+      }
+    }
+    td.fixed {
+      background-color:rgb(229 231 235);
+      font-weight: bold;
+    }
+  }
+}
+

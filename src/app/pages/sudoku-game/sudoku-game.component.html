@@ -1,0 +1,40 @@
+<div class="mx-auto flex flex-col justify-center items-center">
+  @if(completionMessage()) {
+    <app-winning></app-winning>
+  }
+  <div class="sudoku-grid bg-white">
+    <table class="border-collapse mx-auto">
+      @for (row of grid(); track rowIndex; let rowIndex = $index) {
+        <tr>
+          @for (cell of row; track colIndex; let colIndex = $index) {
+            <td
+              [ngClass]="{
+                'bg-white': isSolved(),
+                'font-medium': isSolved(),
+                'bg-gray-custom': isSolved() && !cell.isFixed,
+                'bg-success': cell.isValid === true,
+                'bg-error': cell.isValid === false,
+                'bg-custom-blue': selectedCell()?.row === rowIndex && selectedCell()?.col === colIndex,
+                'fixed': cell.isFixed && !isSolved()
+              }"
+              (click)="onCellClick(rowIndex, colIndex)"
+              class="w-12 h-12 border border-gray-400 text-center align-middle cursor-pointer"
+              [style.transition]="'background-color 0.3s, color 0.3s'"
+              [style.transition-delay]="isSolved() ? getDelay(rowIndex, colIndex) + 'ms' : '0ms'"
+              [class.text-soft-pink]="isSolved()"
+              [style.color]="isSolved() ? 'green' : 'black'"
+            >
+              @if(cell.value) {
+                <span>{{ cell.value }}</span>
+              }
+            </td>
+          }
+        </tr>
+      }
+    </table>
+  </div>
+
+  <app-action-panel
+    (reset)="restartGame()"
+    (chooseAnotherCrossword)="goToSelectSudoku()"
+  ></app-action-panel>

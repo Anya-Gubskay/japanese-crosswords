@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: url("assets/background.webp") center no-repeat;
+  background-size: cover; /* Картинка растягивается по высоте и ширине, сохраняя пропорции */
+  margin: 0;
+  min-height: 100vh; /* Устанавливаем минимальную высоту на всю высоту окна браузера */
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip-active {
+  opacity: 1;
+}
+

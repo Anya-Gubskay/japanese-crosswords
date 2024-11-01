@@ -1,0 +1,22 @@
+{
+  "singleQuote": true,
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "tailwindConfig": "tailwind.config.js",
+  "importOrder": [
+    "^(@angular/(.*)|rxjs)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderParserPlugins": ["decorators-legacy", "typescript"],
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "proseWrap": "always"
+      }
+    }
+  ]
+}

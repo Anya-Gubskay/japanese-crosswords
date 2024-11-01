@@ -1,0 +1,46 @@
+<div class="flex flex-col items-center justify-center w-full">
+<div class="container mx-auto flex justify-center items-center space-x-12 text-custom-teal mb-4">
+  <app-card
+    (onClickCard)="selectLevel(LEVEL.Easy)"
+  >
+    <div class="text-center text-2xl font-bold">Простой</div>
+    <div class="flex justify-center mt-6">
+      <video class="w-72 h-40 object-cover rounded-lg" preload="auto" autoplay loop muted playsinline>
+        <source src="assets/videos/easy-level.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает видео.
+      </video>
+    </div>
+  </app-card>
+
+  <app-card
+    (onClickCard)="selectLevel(LEVEL.Medium)">
+    <div class="text-center text-2xl font-bold">Средний</div>
+    <div class="flex justify-center mt-6">
+      <video class="w-72 h-40 object-cover rounded-lg" preload="auto" autoplay loop muted playsinline>
+        <source src="assets/videos/medium-level.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает видео.
+      </video>
+    </div>
+  </app-card>
+  <app-card
+    (onClickCard)="selectLevel(LEVEL.Hard)"
+  >
+    <div class="text-center text-2xl font-bold">Сложный</div>
+    <div class="flex justify-center mt-6">
+      <video class="w-72 h-40 object-cover rounded-lg" preload="auto" autoplay loop muted playsinline>
+        <source src="assets/videos/hard-level.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает видео.
+      </video>
+    </div>
+  </app-card>
+
+</div>
+<button
+  (click)="goToStartPage()"
+  class="w-60 bg-custom-teal hover:bg-soft-pink text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300"
+>
+  Выбрать другую игру
+</button>
+</div>
+
+
