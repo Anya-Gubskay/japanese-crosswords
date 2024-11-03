@@ -1,17 +1,17 @@
-<div class="flex justify-center mt-4 space-x-4">
+<div class="flex justify-center mt-4 space-x-4 gap-4">
   <button
     (click)="reset.emit()"
     class="w-60 bg-custom-teal hover:bg-soft-pink text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
   >
-    <span class="material-icons">refresh</span>
-    <span class="ml-2">Очистить</span>
+    <span class="material-icons mr-2">refresh</span>
+    <span>Очистить</span>
   </button>
 
   <button
     (click)="chooseAnotherCrossword.emit()"
-    class="w-60 bg-custom-teal hover:bg-soft-pink text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
+    class="w-10 xl:w-60 bg-custom-teal hover:bg-soft-pink text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 flex items-center justify-center"
   >
-    <span class="material-icons">shuffle</span>
-    <span class="ml-2">Другой кроссворд</span>
+    <span class="material-icons mr-2">shuffle</span>
+    <span>Другой кроссворд</span>
   </button>
 </div>

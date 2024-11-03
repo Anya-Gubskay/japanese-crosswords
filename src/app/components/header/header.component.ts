@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import {Router} from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterStateSnapshot } from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {TooltipDirective} from '@directives/tooltip.directive';
 import { TooltipPosition } from '@enums/tooltip.enum';
+import { distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -12,11 +13,19 @@ import { TooltipPosition } from '@enums/tooltip.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  private router = inject(Router);
+  private router = inject(Router)
   protected TooltipPosition = TooltipPosition;
+  protected url = signal('/')
 
-  protected isRouteActive(url: string) {
-   return this.router.url === url
+  constructor() {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        distinctUntilChanged()
+      )
+      .subscribe((event: NavigationEnd) => {
+        this.url.set(event.urlAfterRedirects);
+      });
   }
 
   protected goToStart() {

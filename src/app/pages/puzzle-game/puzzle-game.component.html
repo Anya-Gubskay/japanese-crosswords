@@ -60,6 +60,8 @@
                 appMouseTracker
                 (mouseDownEvent)="onMouseDown(rowIndex, colIndex ,$event)"
                 (mouseUpEvent)="onMouseUp()"
+                (touchstart)="onTouchStart(rowIndex, colIndex, $event)"
+                (touchend)="onTouchEnd()"
                 (mousemove)="onMouseMove(rowIndex, colIndex)"
                 class="border border-gray-400 cursor-pointer select-none text-center relative"
                 (contextmenu)="$event.preventDefault()"

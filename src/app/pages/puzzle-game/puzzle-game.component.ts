@@ -64,28 +64,33 @@ export class PuzzleGameComponent implements OnInit {
     }
   }
 
-  protected onMouseDown(row: number, col: number, event: MouseEvent) {
-    event.preventDefault(); // Предотвращаем контекстное меню
+  protected onMouseDown(row: number, col: number, event: MouseEvent | TouchEvent) {
+    event.preventDefault(); // Предотвращаем стандартное поведение
 
     if (this.isSolved()) return;
 
-    this.isPainting.set(true);
-
-    const { button } = event;
     const cell = this.grid()[row][col];
-
     this.isDragging.set(true);
 
-    if (button === 0) {
-      this.isFilling.set(!cell.filled);
-      this.isMarking.set(false);
-    } else if (button === 2) {
-      this.isMarking.set(!cell.marked);
-      this.isFilling.set(null);
-    } else {
-      return;
-    }
+    // Независимо от типа события, выполняем действие на ячейке
+    this.processCellAction(cell, row, col);
+  }
 
+  private processCellAction(cell: Cell, row: number, col: number) {
+    if (!cell.filled && !cell.marked) {
+      // Первый клик: закрашивание
+      this.isFilling.set(true);
+      this.isMarking.set(null);
+    } else if (cell.filled) {
+      // Второй клик: установка крестика
+      this.isFilling.set(null);
+      this.isMarking.set(true);
+      cell.filled = false;
+    } else if (cell.marked) {
+      // Третий клик: очистка клетки
+      this.isFilling.set(false);
+      this.isMarking.set(false);
+    }
     this.puzzleService.updateCell(row, col, this.grid, this.isFilling, this.isMarking);
   }
 
@@ -101,9 +106,18 @@ export class PuzzleGameComponent implements OnInit {
     this.highlightedRow.set(row);
     this.highlightedCol.set(col);
 
-    if (!this.isDragging() || this.isSolved() || !this.isPainting()) return;
+    if (!this.isDragging() || this.isSolved()) return;
 
     this.puzzleService.updateCell(row, col, this.grid, this.isFilling, this.isMarking);
+  }
+
+  protected onTouchStart(row: number, col: number, event: TouchEvent) {
+    event.preventDefault();
+    this.onMouseDown(row, col, event);
+  }
+
+  protected onTouchEnd() {
+    this.onMouseUp();
   }
 
   private loadGridState() {
