@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '@components/header/header.component';
 
@@ -11,4 +11,11 @@ import { HeaderComponent } from '@components/header/header.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+    // Блокируем масштабирование при жестах на тачпаде
+  @HostListener('wheel', ['$event'])
+  onWheel(event: WheelEvent): void {
+    if (event.ctrlKey) {
+      event.preventDefault(); // Отменяем зум
+    }
+  }
 }
