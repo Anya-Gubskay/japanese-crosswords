@@ -1,3 +1,12 @@
+import { ActionPanelComponent } from '@components/action-panel/action-panel.component';
+import { WinningComponent } from '@components/winning/winning.component';
+import { imagesWinnerByGame } from '@constants/images-winner.constant';
+import { Level } from '@enums/level.enum';
+import { CellSudoku, ItemSudoku } from '@interfaces/sudoku.interface';
+import { LocalstorageGamesService } from '@services/localstorage-games.service';
+import { SudokuService } from '@services/sudoku.service';
+
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -5,17 +14,9 @@ import {
   inject,
   OnInit,
   signal,
-  WritableSignal
+  WritableSignal,
 } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { WinningComponent } from '@components/winning/winning.component';
-import { Level } from '@enums/level.enum';
-import { SudokuService } from '@services/sudoku.service';
-import { CellSudoku, ItemSudoku } from '@interfaces/sudoku.interface';
-import { ActionPanelComponent } from '@components/action-panel/action-panel.component';
-import { LocalstorageGamesService } from '@services/localstorage-games.service';
-import { CommonModule} from '@angular/common';
-import { imagesWinnerByGame } from '@constants/images-winner.constant';
 
 @Component({
   standalone: true,
@@ -42,24 +43,32 @@ export class SudokuGameComponent implements OnInit {
   protected imgSrc = imagesWinnerByGame.sudoku;
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => this.updateGameParams(params));
-   this.localstorageGamesService.clearLocaleStorageToAnotherPageByKey('sudokuState');
+    this.route.paramMap.subscribe((params) => this.updateGameParams(params));
+    this.localstorageGamesService.clearLocaleStorageToAnotherPageByKey(
+      'sudokuState',
+    );
   }
 
   private updateGameParams(params: ParamMap): void {
-    this.level.set(params.get('level') as Level || Level.Easy);
+    this.level.set((params.get('level') as Level) || Level.Easy);
     this.puzzleId.set(+(params.get('id') as string) || 1);
     this.initializeGrid();
     this.checkCompletion();
   }
 
   private initializeGrid(): void {
-    const savedState = this.localstorageGamesService.getDataLocalStorageByKey('sudokuState');
-    const gridConfig = this.sudokuService.getGridConfig(this.level(), this.puzzleId())!;
+    const savedState =
+      this.localstorageGamesService.getDataLocalStorageByKey('sudokuState');
+    const gridConfig = this.sudokuService.getGridConfig(
+      this.level(),
+      this.puzzleId(),
+    )!;
     if (savedState) {
       this.grid.set(JSON.parse(savedState));
     } else {
-      this.grid.set(this.sudokuService.convertGridToCells(gridConfig.initialGrid));
+      this.grid.set(
+        this.sudokuService.convertGridToCells(gridConfig.initialGrid),
+      );
     }
     this.solvedGrid.set(gridConfig.solvedGrid);
   }
@@ -67,7 +76,11 @@ export class SudokuGameComponent implements OnInit {
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     const selected = this.selectedCell();
-    if (selected && !this.grid()[selected.row][selected.col].isFixed && !this.isSolved()) {
+    if (
+      selected &&
+      !this.grid()[selected.row][selected.col].isFixed &&
+      !this.isSolved()
+    ) {
       this.updateCellValue(Number(event.key));
     } else {
       // Сбрасываем выделение, если выбрана фиксированная клетка
@@ -84,7 +97,7 @@ export class SudokuGameComponent implements OnInit {
         ...currentGrid[row][col],
         value: value,
         isValid: null,
-        questionMark: false
+        questionMark: false,
       };
 
       this.grid.set([...currentGrid]); // Обновляем ссылку на массив для срабатывания detectChanges
@@ -97,10 +110,10 @@ export class SudokuGameComponent implements OnInit {
   protected onCellClick(row: number, col: number): void {
     const cell = this.grid()[row][col];
     if (!this.isSolved()) {
-      if (cell.value && !cell.isFixed)  {
+      if (cell.value && !cell.isFixed) {
         this.clearCellValue(row, col);
-      } 
-        this.selectedCell.set({ row, col });
+      }
+      this.selectedCell.set({ row, col });
     }
   }
 
@@ -122,7 +135,10 @@ export class SudokuGameComponent implements OnInit {
 
   private checkCompletion(): void {
     const isGameComplete = this.grid().every((row, rowIndex) =>
-      row.every((cell, colIndex) => cell.value === this.solvedGrid()[rowIndex][colIndex])
+      row.every(
+        (cell, colIndex) =>
+          cell.value === this.solvedGrid()[rowIndex][colIndex],
+      ),
     );
     if (isGameComplete) {
       this.completeGame();
@@ -130,14 +146,14 @@ export class SudokuGameComponent implements OnInit {
   }
 
   private completeGame(): void {
-    this.completionMessage.set("Вы выиграли!");
-    this.grid().forEach(row =>
-      row.forEach(cell => {
+    this.completionMessage.set('Вы выиграли!');
+    this.grid().forEach((row) =>
+      row.forEach((cell) => {
         if (!cell.isFixed) {
           cell.isValid = true;
           cell.isFixed = true;
         }
-      })
+      }),
     );
     setTimeout(() => this.isSolved.set(true), 1000);
   }
@@ -147,7 +163,10 @@ export class SudokuGameComponent implements OnInit {
   }
 
   private saveGameState(): void {
-    this.localstorageGamesService.saveGridState<CellSudoku[][]>(this.grid(), 'sudokuState');
+    this.localstorageGamesService.saveGridState<CellSudoku[][]>(
+      this.grid(),
+      'sudokuState',
+    );
   }
 
   protected restartGame(): void {

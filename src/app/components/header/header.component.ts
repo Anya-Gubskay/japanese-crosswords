@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { NavigationEnd, Router,} from '@angular/router';
-import { NgClass} from "@angular/common";
-import {TooltipDirective} from '@directives/tooltip.directive';
+import { TooltipDirective } from '@directives/tooltip.directive';
 import { TooltipPosition } from '@enums/tooltip.enum';
+
+import { NgClass } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
@@ -13,15 +19,15 @@ import { distinctUntilChanged, filter } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  private router = inject(Router)
+  private router = inject(Router);
   protected TooltipPosition = TooltipPosition;
-  protected url = signal('/')
+  protected url = signal('/');
 
   constructor() {
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
-        distinctUntilChanged()
+        filter((event) => event instanceof NavigationEnd),
+        distinctUntilChanged(),
       )
       .subscribe((event: NavigationEnd) => {
         this.url.set(event.urlAfterRedirects);

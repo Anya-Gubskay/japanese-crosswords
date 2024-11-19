@@ -1,11 +1,22 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import { PuzzleService} from '@services/puzzle.service';
-import {Level} from '@enums/level.enum';
-import {Puzzle} from '@interfaces/puzzle.interface';
 import { CardComponent } from '@components/card/card.component';
-import {SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angular';
+import { Level } from '@enums/level.enum';
+import { Puzzle } from '@interfaces/puzzle.interface';
+import { PuzzleService } from '@services/puzzle.service';
+import {
+  SimplebarAngularComponent,
+  SimplebarAngularModule,
+} from 'simplebar-angular';
+
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -16,7 +27,7 @@ import {SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angu
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPuzzleComponent implements OnInit {
-  protected puzzles:WritableSignal<Puzzle[]> = signal([]);
+  protected puzzles: WritableSignal<Puzzle[]> = signal([]);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private puzzleService = inject(PuzzleService);
@@ -24,7 +35,7 @@ export class SelectPuzzleComponent implements OnInit {
   protected optionsForSimpleBar = { autoHide: false, scrollbarMinSize: 100 };
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.level = params.get('level') as Level;
       this.puzzles.set(this.puzzleService.getPuzzles(this.level));
     });

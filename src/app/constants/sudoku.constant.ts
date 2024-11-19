@@ -12,9 +12,10 @@ const sudokuEasy: Sudoku[] = [
       [6, 7, 1, 2, 8, 9, 4, 5, 3],
       [1, 4, 3, 8, 9, 2, 6, 7, 5],
       [2, 9, 7, 5, 6, 3, 8, 4, 1],
-      [5, null, 8, 1, 7, 4, 3, 9, 2]
+      [5, null, 8, 1, 7, 4, 3, 9, 2],
     ],
-    solvedGrid: [[7, 3, 4, 9, 2, 1, 5, 8, 6],
+    solvedGrid: [
+      [7, 3, 4, 9, 2, 1, 5, 8, 6],
       [9, 1, 6, 3, 5, 8, 7, 2, 4],
       [8, 2, 5, 7, 4, 6, 1, 3, 9],
       [4, 8, 2, 6, 3, 5, 9, 1, 7],
@@ -22,8 +23,9 @@ const sudokuEasy: Sudoku[] = [
       [6, 7, 1, 2, 8, 9, 4, 5, 3],
       [1, 4, 3, 8, 9, 2, 6, 7, 5],
       [2, 9, 7, 5, 6, 3, 8, 4, 1],
-      [5, 6, 8, 1, 7, 4, 3, 9, 2]],
-    srcImg: 'assets/images/sudoku-easy-1.webp'
+      [5, 6, 8, 1, 7, 4, 3, 9, 2],
+    ],
+    srcImg: 'assets/images/sudoku-easy-1.webp',
   },
   {
     id: 2,
@@ -36,7 +38,7 @@ const sudokuEasy: Sudoku[] = [
       [7, 1, 3, 9, 2, 4, 8, 5, 6],
       [9, null, 1, 5, 3, 7, 2, 8, 4],
       [2, 8, 7, 4, 1, 9, 6, 3, 5],
-      [3, 4, 5, 2, 8, 6, 1, 7, 9]
+      [3, 4, 5, 2, 8, 6, 1, 7, 9],
     ],
     solvedGrid: [
       [5, 3, 4, 6, 7, 8, 9, 1, 2],
@@ -47,9 +49,9 @@ const sudokuEasy: Sudoku[] = [
       [7, 1, 3, 9, 2, 4, 8, 5, 6],
       [9, 6, 1, 5, 3, 7, 2, 8, 4],
       [2, 8, 7, 4, 1, 9, 6, 3, 5],
-      [3, 4, 5, 2, 8, 6, 1, 7, 9]
+      [3, 4, 5, 2, 8, 6, 1, 7, 9],
     ],
-    srcImg: 'assets/images/sudoku-easy-2.webp'
+    srcImg: 'assets/images/sudoku-easy-2.webp',
   },
   {
     id: 3,
@@ -62,7 +64,7 @@ const sudokuEasy: Sudoku[] = [
       [6, 5, 7, 8, 3, 4, 1, 2, 9],
       [7, null, 6, 9, 1, 3, 4, 5, 8],
       [5, 1, 4, 2, 6, 8, 9, 3, 7],
-      [3, 8, 9, 7, 4, 5, null, 1, 6]
+      [3, 8, 9, 7, 4, 5, null, 1, 6],
     ],
     solvedGrid: [
       [2, 9, 3, 4, 5, 7, 6, 8, 1],
@@ -73,10 +75,10 @@ const sudokuEasy: Sudoku[] = [
       [6, 5, 7, 8, 3, 4, 1, 2, 9],
       [7, 2, 6, 9, 1, 3, 4, 5, 8],
       [5, 1, 4, 2, 6, 8, 9, 3, 7],
-      [3, 8, 9, 7, 4, 5, 2, 1, 6]
+      [3, 8, 9, 7, 4, 5, 2, 1, 6],
     ],
-    srcImg: 'assets/images/sudoku-easy-3.webp'
-  }
+    srcImg: 'assets/images/sudoku-easy-3.webp',
+  },
 ];
 const sudokuMedium: Sudoku[] = [
   {
@@ -90,7 +92,7 @@ const sudokuMedium: Sudoku[] = [
       [1, 6, 8, 5, 9, 3, 4, 2, 7],
       [9, 2, 3, 8, 7, 1, 5, 4, 6],
       [7, 4, 6, 3, 5, null, 8, 1, 2],
-      [8, 5, null, 2, 4, 6, 7, 3, 9]
+      [8, 5, null, 2, 4, 6, 7, 3, 9],
     ],
     solvedGrid: [
       [6, 1, 9, 4, 8, 5, 2, 7, 3],
@@ -101,9 +103,9 @@ const sudokuMedium: Sudoku[] = [
       [1, 6, 8, 5, 9, 3, 4, 2, 7],
       [9, 2, 3, 8, 7, 1, 5, 4, 6],
       [7, 4, 6, 3, 5, 9, 8, 1, 2],
-      [8, 5, 1, 2, 4, 6, 7, 3, 9]
+      [8, 5, 1, 2, 4, 6, 7, 3, 9],
     ],
-    srcImg: 'assets/images/sudoku-medium-1.webp'
+    srcImg: 'assets/images/sudoku-medium-1.webp',
   },
   {
     id: 2,
@@ -116,7 +118,7 @@ const sudokuMedium: Sudoku[] = [
       [6, 1, null, 9, 7, 2, null, 3, 5],
       [7, 8, 6, 2, 3, 5, 9, 1, 4],
       [1, null, 4, 7, 9, 6, 8, 2, 3],
-      [2, 3, 9, 8, 4, 1, null, 6, 7]
+      [2, 3, 9, 8, 4, 1, null, 6, 7],
     ],
     solvedGrid: [
       [8, 2, 7, 1, 5, 4, 3, 9, 6],
@@ -127,9 +129,9 @@ const sudokuMedium: Sudoku[] = [
       [6, 1, 8, 9, 7, 2, 4, 3, 5],
       [7, 8, 6, 2, 3, 5, 9, 1, 4],
       [1, 5, 4, 7, 9, 6, 8, 2, 3],
-      [2, 3, 9, 8, 4, 1, 5, 6, 7]
+      [2, 3, 9, 8, 4, 1, 5, 6, 7],
     ],
-    srcImg: 'assets/images/sudoku-medium-2.webp'
+    srcImg: 'assets/images/sudoku-medium-2.webp',
   },
   {
     id: 3,
@@ -142,7 +144,7 @@ const sudokuMedium: Sudoku[] = [
       [9, null, 1, 7, 4, 3, 6, 2, 8],
       [5, 1, 9, 3, 2, 6, 8, null, 4],
       [2, 4, 8, 9, 5, 7, 1, 3, 6],
-      [7, 6, null, 4, 1, 8, 2, 5, 9]
+      [7, 6, null, 4, 1, 8, 2, 5, 9],
     ],
     solvedGrid: [
       [4, 3, 5, 2, 6, 9, 7, 8, 1],
@@ -153,11 +155,11 @@ const sudokuMedium: Sudoku[] = [
       [9, 5, 1, 7, 4, 3, 6, 2, 8],
       [5, 1, 9, 3, 2, 6, 8, 7, 4],
       [2, 4, 8, 9, 5, 7, 1, 3, 6],
-      [7, 6, 3, 4, 1, 8, 2, 5, 9]
+      [7, 6, 3, 4, 1, 8, 2, 5, 9],
     ],
-    srcImg: 'assets/images/sudoku-medium-3.webp'
-  }
-]
+    srcImg: 'assets/images/sudoku-medium-3.webp',
+  },
+];
 const sudokuHard: Sudoku[] = [
   {
     id: 1,
@@ -170,7 +172,7 @@ const sudokuHard: Sudoku[] = [
       [5, 4, null, 2, 1, 6, null, 3, 8],
       [7, 6, 3, 5, 2, 4, 1, 8, 9],
       [9, null, 8, 6, 7, 1, null, 5, 4],
-      [1, 5, null, 9, 3, 8, 6, 7, 2]
+      [1, 5, null, 9, 3, 8, 6, 7, 2],
     ],
     solvedGrid: [
       [2, 9, 5, 7, 4, 3, 8, 6, 1],
@@ -181,9 +183,9 @@ const sudokuHard: Sudoku[] = [
       [5, 4, 9, 2, 1, 6, 7, 3, 8],
       [7, 6, 3, 5, 2, 4, 1, 8, 9],
       [9, 2, 8, 6, 7, 1, 3, 5, 4],
-      [1, 5, 4, 9, 3, 8, 6, 7, 2]
+      [1, 5, 4, 9, 3, 8, 6, 7, 2],
     ],
-    srcImg: 'assets/images/sudoku-hard-1.webp'
+    srcImg: 'assets/images/sudoku-hard-1.webp',
   },
   {
     id: 2,
@@ -196,7 +198,7 @@ const sudokuHard: Sudoku[] = [
       [7, 1, null, 9, 2, 4, null, 5, 6],
       [9, null, 1, 5, 3, 7, 2, 8, 4],
       [2, 8, 7, 4, null, 9, 6, null, 5],
-      [3, 4, 5, 2, 8, 6, 1, 7, 9]
+      [3, 4, 5, 2, 8, 6, 1, 7, 9],
     ],
     solvedGrid: [
       [5, 3, 4, 6, 7, 8, 9, 1, 2],
@@ -207,9 +209,9 @@ const sudokuHard: Sudoku[] = [
       [7, 1, 3, 9, 2, 4, 8, 5, 6],
       [9, 6, 1, 5, 3, 7, 2, 8, 4],
       [2, 8, 7, 4, 1, 9, 6, 3, 5],
-      [3, 4, 5, 2, 8, 6, 1, 7, 9]
+      [3, 4, 5, 2, 8, 6, 1, 7, 9],
     ],
-    srcImg: 'assets/images/sudoku-hard-2.webp'
+    srcImg: 'assets/images/sudoku-hard-2.webp',
   },
   {
     id: 3,
@@ -222,7 +224,7 @@ const sudokuHard: Sudoku[] = [
       [6, 1, 8, null, 7, 2, 4, 3, 5],
       [7, null, 6, 2, 3, 5, null, 1, 4],
       [1, 5, 4, 7, 9, 6, 8, 2, 3],
-      [2, 3, null, 8, 4, null, 5, 6, 7]
+      [2, 3, null, 8, 4, null, 5, 6, 7],
     ],
     solvedGrid: [
       [8, 2, 7, 1, 5, 4, 3, 9, 6],
@@ -233,15 +235,14 @@ const sudokuHard: Sudoku[] = [
       [6, 1, 8, 9, 7, 2, 4, 3, 5],
       [7, 8, 6, 2, 3, 5, 9, 1, 4],
       [1, 5, 4, 7, 9, 6, 8, 2, 3],
-      [2, 3, 9, 8, 4, 1, 5, 6, 7]
+      [2, 3, 9, 8, 4, 1, 5, 6, 7],
     ],
-    srcImg: 'assets/images/sudoku-hard-3.webp'
-  }
-]
-
+    srcImg: 'assets/images/sudoku-hard-3.webp',
+  },
+];
 
 export const SUDOKU = {
   EASY: sudokuEasy,
   MEDIUM: sudokuMedium,
-  HARD: sudokuHard
-}
+  HARD: sudokuHard,
+};

@@ -1,21 +1,21 @@
-<div class="flex justify-center gap-4 mt-4 space-x-4">
+<div class="mt-4 flex justify-center gap-4 space-x-4">
   <button
-  (click)="reset.emit()"
-  class="flex items-center justify-center px-4 py-2 font-bold text-white transition duration-300 rounded-full shadow-lg w-60 bg-custom-teal hover:bg-soft-pink"
->
-  <svg class="w-6 h-6 mr-2">
-    <use xlink:href="assets/icons/icons.svg#refresh"></use>
-  </svg>
-  <span>Очистить</span>
-</button>
+    (click)="reset.emit()"
+    class="flex w-60 items-center justify-center rounded-full bg-custom-teal px-4 py-2 font-bold text-white shadow-lg transition duration-300 hover:bg-soft-pink"
+  >
+    <svg class="mr-2 h-6 w-6">
+      <use xlink:href="assets/icons/icons.svg#refresh"></use>
+    </svg>
+    <span>Очистить</span>
+  </button>
 
-<button
-  (click)="chooseAnotherCrossword.emit()"
-  class="flex items-center justify-center px-4 py-2 font-bold text-white transition duration-300 rounded-full shadow-lg w-60 bg-custom-teal hover:bg-soft-pink"
->
-  <svg class="w-6 h-6 mr-2">
-    <use xlink:href="assets/icons/icons.svg#shuffle"></use>
-  </svg>
-  <span>Другой кроссворд</span>
-</button>
+  <button
+    (click)="chooseAnotherCrossword.emit()"
+    class="flex w-60 items-center justify-center rounded-full bg-custom-teal px-4 py-2 font-bold text-white shadow-lg transition duration-300 hover:bg-soft-pink"
+  >
+    <svg class="mr-2 h-6 w-6">
+      <use xlink:href="assets/icons/icons.svg#shuffle"></use>
+    </svg>
+    <span>Другой кроссворд</span>
+  </button>
 </div>

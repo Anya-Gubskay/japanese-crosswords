@@ -1,17 +1,25 @@
-import {Directive, ElementRef, Renderer2, HostListener, input, inject} from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Renderer2,
+  HostListener,
+  input,
+  inject,
+} from '@angular/core';
+
 import { TooltipPosition } from '../enums/tooltip.enum';
 
 @Directive({
   standalone: true,
-  selector: '[appTooltip]'
+  selector: '[appTooltip]',
 })
 export class TooltipDirective {
   appTooltip = input<string>('');
   appTooltipPosition = input<TooltipPosition>(TooltipPosition.Top);
 
- private el = inject(ElementRef);
- private renderer = inject(Renderer2);
- private tooltipElement: HTMLElement | null = null;
+  private el = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  private tooltipElement: HTMLElement | null = null;
 
   @HostListener('mouseenter') onMouseEnter() {
     if (!this.tooltipElement) {
@@ -25,7 +33,7 @@ export class TooltipDirective {
 
   showTooltip() {
     this.tooltipElement = this.renderer.createElement('span');
-    this.tooltipElement!.innerText = this.appTooltip();  // Используем оператор "!"
+    this.tooltipElement!.innerText = this.appTooltip(); // Используем оператор "!"
     this.renderer.appendChild(document.body, this.tooltipElement);
 
     // Добавляем класс для стилей
@@ -66,7 +74,8 @@ export class TooltipDirective {
 
     // Добавляем класс для плавного появления
     setTimeout(() => {
-      if (this.tooltipElement) {  // Проверка на null
+      if (this.tooltipElement) {
+        // Проверка на null
         this.renderer.addClass(this.tooltipElement, 'tooltip-active');
       }
     }, 0);
@@ -80,7 +89,7 @@ export class TooltipDirective {
           this.renderer.removeChild(document.body, this.tooltipElement);
           this.tooltipElement = null;
         }
-      }, 300);  // Время, соответствующее переходу `opacity`
+      }, 300); // Время, соответствующее переходу `opacity`
     }
   }
 }

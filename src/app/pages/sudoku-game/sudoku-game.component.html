@@ -1,8 +1,8 @@
-<div class="flex flex-col items-center justify-center mx-auto">
-  @if(completionMessage()) {
+<div class="mx-auto flex flex-col items-center justify-center">
+  @if (completionMessage()) {
     <app-winning [imgSrc]="imgSrc"></app-winning>
   }
-  <div class="bg-white sudoku-grid">
+  <div class="sudoku-grid bg-white">
     <table class="mx-auto border-collapse">
       @for (row of grid(); track rowIndex; let rowIndex = $index) {
         <tr>
@@ -14,17 +14,21 @@
                 'bg-gray-custom': isSolved() && !cell.isFixed,
                 'bg-success': cell.isValid === true,
                 'bg-error': cell.isValid === false,
-                'bg-blue-200': selectedCell()?.row === rowIndex && selectedCell()?.col === colIndex,
-                'fixed': cell.isFixed && !isSolved()
+                'bg-blue-200':
+                  selectedCell()?.row === rowIndex &&
+                  selectedCell()?.col === colIndex,
+                fixed: cell.isFixed && !isSolved(),
               }"
               (click)="onCellClick(rowIndex, colIndex)"
-              class="w-12 h-12 text-center align-middle border border-gray-400 cursor-pointer"
+              class="h-12 w-12 cursor-pointer border border-gray-400 text-center align-middle"
               [style.transition]="'background-color 0.3s, color 0.3s'"
-              [style.transition-delay]="isSolved() ? getDelay(rowIndex, colIndex) + 'ms' : '0ms'"
+              [style.transition-delay]="
+                isSolved() ? getDelay(rowIndex, colIndex) + 'ms' : '0ms'
+              "
               [class.text-soft-pink]="isSolved()"
               [style.color]="isSolved() ? 'green' : 'black'"
             >
-              @if(cell.value) {
+              @if (cell.value) {
                 <span>{{ cell.value }}</span>
               }
             </td>
@@ -38,3 +42,4 @@
     (reset)="restartGame()"
     (chooseAnotherCrossword)="goToSelectSudoku()"
   ></app-action-panel>
+</div>

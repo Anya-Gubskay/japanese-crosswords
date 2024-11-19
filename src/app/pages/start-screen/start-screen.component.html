@@ -1,13 +1,25 @@
-<div class="container flex flex-col items-center justify-center mx-auto">
+<div class="container mx-auto flex flex-col items-center justify-center">
   <div class="flex items-center justify-center gap-4 p-4">
-   <app-card (onClickCard)="goToSudoku()">
-      <h2 class="mb-4 text-2xl font-bold text-center text-custom-teal">Судоку</h2>
-      <img src="assets/images/sudoku.webp" alt="Sudoku" class="mx-auto rounded-lg shadow-md w-60 h-72 game-image" />
-   </app-card>
+    <app-card (onClickCard)="goToSudoku()">
+      <h2 class="mb-4 text-center text-2xl font-bold text-custom-teal">
+        Судоку
+      </h2>
+      <img
+        src="assets/images/sudoku.webp"
+        alt="Sudoku"
+        class="game-image mx-auto h-72 w-60 rounded-lg shadow-md"
+      />
+    </app-card>
 
     <app-card (onClickCard)="goToPuzzles()">
-      <h2 class="mb-4 text-2xl font-bold text-center text-custom-teal">Японские кроссворды</h2>
-      <img src="assets/images/puzzles.webp" alt="Puzzles" class="mx-auto rounded-lg shadow-md w-60 h-72 game-image" />
+      <h2 class="mb-4 text-center text-2xl font-bold text-custom-teal">
+        Японские кроссворды
+      </h2>
+      <img
+        src="assets/images/puzzles.webp"
+        alt="Puzzles"
+        class="game-image mx-auto h-72 w-60 rounded-lg shadow-md"
+      />
     </app-card>
   </div>
 </div>

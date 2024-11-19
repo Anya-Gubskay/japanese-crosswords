@@ -7,5 +7,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WinningComponent {
-  imgSrc = input<string>()
+  imgSrc = input<string>();
 }

@@ -1,18 +1,32 @@
-import { imagesWinnerByGame } from './../../constants/images-winner.constant';
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PuzzleService } from '@services/puzzle.service';
-import { Cell, Puzzle } from '@interfaces/puzzle.interface';
-import { WinningComponent } from '@components/winning/winning.component';
-import { Level } from '@enums/level.enum';
-import { MouseTrackerDirective } from '@directives/mouse-tracker.directive';
 import { ActionPanelComponent } from '@components/action-panel/action-panel.component';
+import { WinningComponent } from '@components/winning/winning.component';
+import { MouseTrackerDirective } from '@directives/mouse-tracker.directive';
+import { Level } from '@enums/level.enum';
+import { Cell, Puzzle } from '@interfaces/puzzle.interface';
 import { LocalstorageGamesService } from '@services/localstorage-games.service';
+import { PuzzleService } from '@services/puzzle.service';
+
 import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { imagesWinnerByGame } from './../../constants/images-winner.constant';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, WinningComponent, MouseTrackerDirective, ActionPanelComponent],
+  imports: [
+    CommonModule,
+    WinningComponent,
+    MouseTrackerDirective,
+    ActionPanelComponent,
+  ],
   selector: 'app-puzzle-game',
   templateUrl: './puzzle-game.component.html',
   styleUrls: ['./puzzle-game.component.scss'],
@@ -25,19 +39,19 @@ export class PuzzleGameComponent implements OnInit {
   private localstorageGamesService = inject(LocalstorageGamesService);
 
   protected puzzle!: Puzzle;
-  protected isSolved:WritableSignal<boolean> = signal(false);
-  protected level:WritableSignal<Level> = signal(Level.Easy);
+  protected isSolved: WritableSignal<boolean> = signal(false);
+  protected level: WritableSignal<Level> = signal(Level.Easy);
   protected grid: WritableSignal<Cell[][]> = signal([]);
   protected completionMessage: WritableSignal<string> = signal('');
 
-  private highlightedRow:WritableSignal<number | null>= signal(null);
-  private highlightedCol:WritableSignal<number | null> = signal(null);
+  private highlightedRow: WritableSignal<number | null> = signal(null);
+  private highlightedCol: WritableSignal<number | null> = signal(null);
 
   // Переменные для отслеживания процесса выделения
   private isDragging = signal(false);
   private isFilling: WritableSignal<boolean | null> = signal(null); // true для закраски, false для очистки
-  private isMarking:  WritableSignal<boolean | null> = signal(null); // true для крестиков, false для удаления крестиков
-  private isPainting:WritableSignal<boolean> = signal(false);
+  private isMarking: WritableSignal<boolean | null> = signal(null); // true для крестиков, false для удаления крестиков
+  private isPainting: WritableSignal<boolean> = signal(false);
 
   protected imgSrc = imagesWinnerByGame.puzzle;
 
@@ -50,8 +64,10 @@ export class PuzzleGameComponent implements OnInit {
       this.loadPuzzle(puzzleId, this.level());
     });
     this.loadGridState();
-    this.checkSolution()
-    this.localstorageGamesService.clearLocaleStorageToAnotherPageByKey('puzzleGrid')
+    this.checkSolution();
+    this.localstorageGamesService.clearLocaleStorageToAnotherPageByKey(
+      'puzzleGrid',
+    );
   }
 
   private loadPuzzle(id: number, level: Level) {
@@ -67,7 +83,11 @@ export class PuzzleGameComponent implements OnInit {
     }
   }
 
-  protected onMouseDown(row: number, col: number, event: MouseEvent | TouchEvent) {
+  protected onMouseDown(
+    row: number,
+    col: number,
+    event: MouseEvent | TouchEvent,
+  ) {
     event.preventDefault(); // Предотвращаем стандартное поведение
 
     if (this.isSolved()) return;
@@ -94,7 +114,13 @@ export class PuzzleGameComponent implements OnInit {
       this.isFilling.set(false);
       this.isMarking.set(false);
     }
-    this.puzzleService.updateCell(row, col, this.grid, this.isFilling, this.isMarking);
+    this.puzzleService.updateCell(
+      row,
+      col,
+      this.grid,
+      this.isFilling,
+      this.isMarking,
+    );
   }
 
   protected onMouseUp() {
@@ -111,7 +137,13 @@ export class PuzzleGameComponent implements OnInit {
 
     if (!this.isDragging() || this.isSolved()) return;
 
-    this.puzzleService.updateCell(row, col, this.grid, this.isFilling, this.isMarking);
+    this.puzzleService.updateCell(
+      row,
+      col,
+      this.grid,
+      this.isFilling,
+      this.isMarking,
+    );
   }
 
   protected onTouchStart(row: number, col: number, event: TouchEvent) {
@@ -124,7 +156,8 @@ export class PuzzleGameComponent implements OnInit {
   }
 
   private loadGridState() {
-    const savedGrid = this.localstorageGamesService.getDataLocalStorageByKey('puzzleGrid');
+    const savedGrid =
+      this.localstorageGamesService.getDataLocalStorageByKey('puzzleGrid');
     if (savedGrid) {
       const parsedGrid: Cell[][] = JSON.parse(savedGrid);
       this.grid.set(parsedGrid); // Загрузка состояния из localStorage
@@ -139,7 +172,7 @@ export class PuzzleGameComponent implements OnInit {
 
     // Проверка на соответствие текущего состояния решению
     const hasMistakes = currentGrid.some((row, i) =>
-      row.some((cell, j) => cell.filled !== solution[i][j])
+      row.some((cell, j) => cell.filled !== solution[i][j]),
     );
 
     if (hasMistakes) {
@@ -153,13 +186,13 @@ export class PuzzleGameComponent implements OnInit {
     this.completionMessage.set(name);
 
     // Обновление состояния ячеек (снимаем отметку "marked")
-    this.grid.update(grid =>
-      grid.map(row =>
-        row.map(cell => ({
+    this.grid.update((grid) =>
+      grid.map((row) =>
+        row.map((cell) => ({
           ...cell,
           marked: false,
-        }))
-      )
+        })),
+      ),
     );
   }
 
@@ -204,10 +237,12 @@ export class PuzzleGameComponent implements OnInit {
     const solutionRow = this.puzzle.solution[rowIndex];
     const gridRow = this.grid()[rowIndex];
     const isRowSolved = solutionRow.every(
-      (value, colIndex) => gridRow[colIndex].filled === value
+      (value, colIndex) => gridRow[colIndex].filled === value,
     );
     if (isRowSolved) {
-      gridRow.filter((cell) => !cell.filled).forEach((cell) => (cell.marked = true));
+      gridRow
+        .filter((cell) => !cell.filled)
+        .forEach((cell) => (cell.marked = true));
     }
 
     return isRowSolved;
@@ -218,10 +253,12 @@ export class PuzzleGameComponent implements OnInit {
     const solutionCol = this.puzzle.solution.map((row) => row[colIndex]);
     const gridCol = this.grid().map((row) => row[colIndex]);
     const isColumnSolved = solutionCol.every(
-      (value, rowIndex) => gridCol[rowIndex].filled === value
+      (value, rowIndex) => gridCol[rowIndex].filled === value,
     );
     if (isColumnSolved) {
-      gridCol.filter((cell) => !cell.filled).forEach((cell) => (cell.marked = true));
+      gridCol
+        .filter((cell) => !cell.filled)
+        .forEach((cell) => (cell.marked = true));
     }
     return isColumnSolved;
   }

@@ -7,11 +7,11 @@
     [disabled]="url() === '/'"
     appTooltip="Перейти на стартовый экран"
     [appTooltipPosition]="TooltipPosition.Right"
-    class="flex items-center px-4 py-2 mb-2 space-x-2 font-bold text-blue-400 transition-all duration-300 bg-white rounded-full shadow-lg hover:text-white hover:bg-soft-pink"
+    class="mb-2 flex items-center space-x-2 rounded-full bg-white px-4 py-2 font-bold text-blue-400 shadow-lg transition-all duration-300 hover:bg-soft-pink hover:text-white"
   >
-    <svg 
-    class="w-6 h-6 fill-blue-400"
-    [ngClass]=" {'!fill-white': url() === '/'} "
+    <svg
+      class="h-6 w-6 fill-blue-400"
+      [ngClass]="{ '!fill-white': url() === '/' }"
     >
       <use xlink:href="assets/icons/icons.svg#home"></use>
     </svg>
@@ -25,10 +25,11 @@
     [disabled]="url() === '/rules'"
     appTooltip="Перейти к правилам"
     [appTooltipPosition]="TooltipPosition.Right"
-    class="flex items-center px-4 py-2 space-x-2 font-bold text-blue-400 transition-all duration-300 bg-white rounded-full shadow-lg hover:text-white hover:bg-soft-pink"
+    class="flex items-center space-x-2 rounded-full bg-white px-4 py-2 font-bold text-blue-400 shadow-lg transition-all duration-300 hover:bg-soft-pink hover:text-white"
   >
-    <svg class="w-6 h-6 fill-blue-400"
-    [ngClass]=" {'!fill-white': url() === '/rules'} "
+    <svg
+      class="h-6 w-6 fill-blue-400"
+      [ngClass]="{ '!fill-white': url() === '/rules' }"
     >
       <use xlink:href="assets/icons/icons.svg#rule"></use>
     </svg>

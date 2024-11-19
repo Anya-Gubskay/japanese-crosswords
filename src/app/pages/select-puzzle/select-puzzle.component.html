@@ -1,25 +1,23 @@
 <div
-  class="container flex flex-col items-center justify-center mx-auto text-custom-teal"
+  class="container mx-auto flex flex-col items-center justify-center text-custom-teal"
 >
-  <div
-    class="grid grid-cols-1 gap-4 p-4 mb-4 overflow-auto xl:grid-cols-3"
-  >
+  <div class="mb-4 grid grid-cols-1 gap-4 overflow-auto p-4 xl:grid-cols-3">
     @for (puzzle of puzzles(); track puzzle.id) {
       <app-card (onClickCard)="selectPuzzle(puzzle.id)">
-        <h2 class="mb-4 text-2xl font-bold text-center text-custom-teal">
+        <h2 class="mb-4 text-center text-2xl font-bold text-custom-teal">
           Кроссворд {{ puzzle.id }}
         </h2>
         <img
           [src]="puzzle.srcImg"
           alt="Puzzle"
-          class="w-48 h-48 mx-auto rounded-lg shadow-md"
+          class="mx-auto h-48 w-48 rounded-lg shadow-md"
         />
       </app-card>
     }
   </div>
   <button
     (click)="goToSelectLevels()"
-    class="px-4 py-2 font-bold text-white transition duration-300 rounded-full shadow-lg w-60 bg-custom-teal hover:bg-soft-pink"
+    class="w-60 rounded-full bg-custom-teal px-4 py-2 font-bold text-white shadow-lg transition duration-300 hover:bg-soft-pink"
   >
     Выбрать другой уровень
   </button>

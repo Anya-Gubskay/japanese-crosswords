@@ -3,3 +3,9 @@
 /dist
 /coverage
 .angular
+build/
+src/assets/
+.firebase
+.vscode
+.idea
+node_modules/
