@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- Home Icon -->
+  <symbol id="home" viewBox="0 0 24 24">
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+  </symbol>
+
+  <!-- Rule Icon -->
+  <symbol id="rule" viewBox="0 0 24 24">
+    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 19H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm0-4H5V5h2v2zm14 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2z"></path>
+  </symbol>
+
+  <!-- Refresh Icon -->
+  <symbol id="refresh" viewBox="0 0 24 24">
+    <path d="M17.65 6.35A7.95 7.95 0 0 0 12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6h-2c0 4.42 3.58 8 8 8s8-3.58 8-8c0-2.22-.92-4.22-2.35-5.65z"></path>
+  </symbol>
+
+  <!-- Shuffle Icon -->
+<symbol id="shuffle" viewBox="0 0 1024 1024">
+  <path d="M560 864v-80h104L537 657l57-57 126 126v-102h80v240H560Zm-344 0-56-56 504-504H560v-80h240v240h-80v-104L216 864Zm151-377L160 280l56-56 207 207-56 56Z"></path>
+</symbol>
+
+</svg>

@@ -6,8 +6,8 @@ import { TooltipPosition } from '../enums/tooltip.enum';
   selector: '[appTooltip]'
 })
 export class TooltipDirective {
-  appTooltip = input('');
-  appTooltipPosition = input(TooltipPosition.Top);
+  appTooltip = input<string>('');
+  appTooltipPosition = input<TooltipPosition>(TooltipPosition.Top);
 
  private el = inject(ElementRef);
  private renderer = inject(Renderer2);

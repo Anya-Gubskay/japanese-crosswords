@@ -8,13 +8,14 @@ import {
   WritableSignal
 } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { WinningComponent } from '@components/winning/winning.component';
 import { Level } from '@enums/level.enum';
 import { SudokuService } from '@services/sudoku.service';
 import { CellSudoku, ItemSudoku } from '@interfaces/sudoku.interface';
 import { ActionPanelComponent } from '@components/action-panel/action-panel.component';
 import { LocalstorageGamesService } from '@services/localstorage-games.service';
+import { CommonModule} from '@angular/common';
+import { imagesWinnerByGame } from '@constants/images-winner.constant';
 
 @Component({
   standalone: true,
@@ -38,19 +39,21 @@ export class SudokuGameComponent implements OnInit {
   private level: WritableSignal<Level> = signal(Level.Easy);
   private puzzleId: WritableSignal<number> = signal(1);
 
+  protected imgSrc = imagesWinnerByGame.sudoku;
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => this.updateGameParams(params));
    this.localstorageGamesService.clearLocaleStorageToAnotherPageByKey('sudokuState');
   }
 
-  private updateGameParams(params: ParamMap) {
+  private updateGameParams(params: ParamMap): void {
     this.level.set(params.get('level') as Level || Level.Easy);
     this.puzzleId.set(+(params.get('id') as string) || 1);
     this.initializeGrid();
     this.checkCompletion();
   }
 
-  private initializeGrid() {
+  private initializeGrid(): void {
     const savedState = this.localstorageGamesService.getDataLocalStorageByKey('sudokuState');
     const gridConfig = this.sudokuService.getGridConfig(this.level(), this.puzzleId())!;
     if (savedState) {
@@ -63,12 +66,16 @@ export class SudokuGameComponent implements OnInit {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (this.selectedCell() && !this.isSolved()) {
+    const selected = this.selectedCell();
+    if (selected && !this.grid()[selected.row][selected.col].isFixed && !this.isSolved()) {
       this.updateCellValue(Number(event.key));
+    } else {
+      // Сбрасываем выделение, если выбрана фиксированная клетка
+      this.selectedCell.set(null);
     }
   }
 
-  private updateCellValue(value: number) {
+  private updateCellValue(value: number): void {
     const { row, col } = this.selectedCell()!;
     const currentGrid = this.grid();
 
@@ -87,11 +94,25 @@ export class SudokuGameComponent implements OnInit {
     }
   }
 
-  protected onCellClick(row: number, col: number) {
+  protected onCellClick(row: number, col: number): void {
     const cell = this.grid()[row][col];
-    if (!cell.isFixed && !this.isSolved()) {
-      this.selectedCell.set({ row, col });
+    if (!this.isSolved()) {
+      if (cell.value && !cell.isFixed)  {
+        this.clearCellValue(row, col);
+      } 
+        this.selectedCell.set({ row, col });
     }
+  }
+
+  private clearCellValue(row: number, col: number): void {
+    const currentGrid = this.grid();
+    currentGrid[row][col] = {
+      ...currentGrid[row][col],
+      value: null,
+      isValid: null,
+    };
+    this.grid.set([...currentGrid]); // Обновляем ссылку на массив для срабатывания detectChanges
+    this.saveGameState();
   }
 
   private checkValidity(row: number, col: number) {
@@ -99,7 +120,7 @@ export class SudokuGameComponent implements OnInit {
     currentCell.isValid = currentCell.value === this.solvedGrid()[row][col];
   }
 
-  private checkCompletion() {
+  private checkCompletion(): void {
     const isGameComplete = this.grid().every((row, rowIndex) =>
       row.every((cell, colIndex) => cell.value === this.solvedGrid()[rowIndex][colIndex])
     );
@@ -108,7 +129,7 @@ export class SudokuGameComponent implements OnInit {
     }
   }
 
-  private completeGame() {
+  private completeGame(): void {
     this.completionMessage.set("Вы выиграли!");
     this.grid().forEach(row =>
       row.forEach(cell => {
@@ -125,18 +146,18 @@ export class SudokuGameComponent implements OnInit {
     return (rowIndex * this.grid()[0].length + colIndex) * 25; // 50ms для ускорения анимации
   }
 
-  private saveGameState() {
+  private saveGameState(): void {
     this.localstorageGamesService.saveGridState<CellSudoku[][]>(this.grid(), 'sudokuState');
   }
 
-  protected restartGame() {
+  protected restartGame(): void {
     this.isSolved.set(false);
     this.completionMessage.set('');
     this.localstorageGamesService.clearLocalStorageByKey('sudokuState');
     this.initializeGrid();
   }
 
-  protected goToSelectSudoku() {
+  protected goToSelectSudoku(): void {
     this.router.navigate(['/select-sudoku', this.level()]);
   }
 }

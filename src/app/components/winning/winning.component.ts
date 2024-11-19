@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-winning',
@@ -6,4 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './winning.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WinningComponent {}
+export class WinningComponent {
+  imgSrc = input<string>()
+}

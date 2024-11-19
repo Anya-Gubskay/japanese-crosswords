@@ -1,14 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { PuzzleService} from '@services/puzzle.service';
 import {Level} from '@enums/level.enum';
 import {Puzzle} from '@interfaces/puzzle.interface';
 import { CardComponent } from '@components/card/card.component';
-import { CommonModule } from '@angular/common';
+import {SimplebarAngularComponent, SimplebarAngularModule } from 'simplebar-angular';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, SimplebarAngularModule],
   selector: 'app-select-puzzle',
   templateUrl: './select-puzzle.component.html',
   styleUrls: ['./select-puzzle.component.scss'],
@@ -20,6 +21,7 @@ export class SelectPuzzleComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private puzzleService = inject(PuzzleService);
   private level = Level.Easy;
+  protected optionsForSimpleBar = { autoHide: false, scrollbarMinSize: 100 };
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

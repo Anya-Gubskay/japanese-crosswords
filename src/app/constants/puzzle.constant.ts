@@ -29,7 +29,7 @@ const puzzlesEasy: Puzzle[] = [
       [false, false, true,  false, false],
       [false, false, true,  false, false],
     ],
-    srcImg: 'assets/puzzle-easy-1.webp'
+    srcImg: 'assets/images/puzzle-easy-1.webp'
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ const puzzlesEasy: Puzzle[] = [
       [false, true,  true,  true,  false],
       [false, true,  true,  true,  false],
     ],
-    srcImg: 'assets/puzzle-easy-2.webp'
+    srcImg: 'assets/images/puzzle-easy-2.webp'
   },
   {
     id: 3,
@@ -89,7 +89,7 @@ const puzzlesEasy: Puzzle[] = [
       [false, false, true,  false, false],
       [false, false, true,  false, false],
     ],
-    srcImg: 'assets/puzzle-easy-3.webp'
+    srcImg: 'assets/images/puzzle-easy-3.webp'
   },
   {
     id: 4,
@@ -134,7 +134,7 @@ const puzzlesEasy: Puzzle[] = [
       [false, false, false, true,  true,  true,  true,  false, false, false],
       [false, false, false, false, true,  true,  false, false, false, false]
     ],
-    "srcImg": "assets/puzzle-easy-4.webp"
+    "srcImg": "assets/images/puzzle-easy-4.webp"
   },
   {
     id: 5,
@@ -164,7 +164,7 @@ const puzzlesEasy: Puzzle[] = [
       [true,  false, false, false, true ],
       [true,  false, false, false, true ],
     ],
-    srcImg: 'assets/puzzle-easy-5.webp'
+    srcImg: 'assets/images/puzzle-easy-5.webp'
   },
 ];
 
@@ -229,7 +229,7 @@ const puzzlesMedium: Puzzle[] = [
       [false, false, false,  false,  false, false, false,  true,  true, true,  true, false,  false,  false, false],
       [false, false, false,  false,  false, false, false,  false,  false, true,  true, true,  false,  false, false],
     ],
-    "srcImg": "assets/puzzle-middle-1.webp"
+    "srcImg": "assets/images/puzzle-middle-1.webp"
   },
   {
     "id": 2,
@@ -293,7 +293,7 @@ const puzzlesMedium: Puzzle[] = [
       [false, false, false,  false,  false, false, false, false,  false, true,  true, true,  true, true, true],
 
     ],
-    "srcImg": "assets/puzzle-middle-2.webp"
+    "srcImg": "assets/images/puzzle-middle-2.webp"
   },
   {
     "id": 3,
@@ -355,7 +355,7 @@ const puzzlesMedium: Puzzle[] = [
       [false, false, false,  false,  true, true, false,  true,  true, true,  false, false,  false,  false, false],
       [false, false, false,  false,  false, false, true,  true,  true, true,  true, true,  false,  false, false],
     ],
-    "srcImg": "assets/puzzle-middle-3.webp"
+    "srcImg": "assets/images/puzzle-middle-3.webp"
   },
 ];
 
@@ -436,7 +436,7 @@ const puzzlesHard: Puzzle[] = [
       [false, false, false, true,  true, true, true, true, true,  true, true, true, true, true,  true, false, false, false, false,  false],
       [false, false, true, true,  true, true, true, true, true,  true, true, true, false, false,  false, false, false, false, false,  false, false],
     ],
-    srcImg: 'assets/puzzle-hard-1.webp'
+    srcImg: 'assets/images/puzzle-hard-1.webp'
   },
   {
     "id": 2,
@@ -516,7 +516,7 @@ const puzzlesHard: Puzzle[] = [
       [false, true, false,  true, false, false, false,  false,  false, false, false, true,  false,  true, false,false,false,false,false,false],
 
     ],
-    "srcImg": "assets/puzzle-hard-2.webp"
+    "srcImg": "assets/images/puzzle-hard-2.webp"
   },
   {
     "id": 3,
@@ -595,7 +595,7 @@ const puzzlesHard: Puzzle[] = [
       [false, true, true,  true,  false, false, false,  false,  false, false,  false, false, false,  false, false,true,true,true,true,true],
       [false, true, true,  true,  false, false, false,  false,  false, false,  false, false, false,  false, true,true,true,true,true,true],
     ],
-    "srcImg": "assets/puzzle-hard-3.webp"
+    "srcImg": "assets/images/puzzle-hard-3.webp"
   },
   {
     "id": 4,
@@ -674,7 +674,7 @@ const puzzlesHard: Puzzle[] = [
       [false, false, false,  false,  false, true, true,  true,  true, true,  true, true, true,  true, true,true,true,false,false,false],
       [false, false, false,  false,  false, false, true,  true,  true, true,  true, true, true,  true, true,true,false,false,false,false],
     ],
-    "srcImg": "assets/puzzle-hard-4.webp"
+    "srcImg": "assets/images/puzzle-hard-4.webp"
   },
 ];
 

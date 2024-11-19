@@ -7,6 +7,6 @@ import { ChangeDetectionStrategy, Component, output } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionPanelComponent {
-    protected reset = output<void>();
-    protected chooseAnotherCrossword = output<void>()
+  protected reset = output<void>();
+  protected chooseAnotherCrossword = output<void>();
 }

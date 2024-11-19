@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterStateSnapshot } from '@angular/router';
-import {CommonModule} from "@angular/common";
+import { NavigationEnd, Router,} from '@angular/router';
+import { NgClass} from "@angular/common";
 import {TooltipDirective} from '@directives/tooltip.directive';
 import { TooltipPosition } from '@enums/tooltip.enum';
 import { distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, TooltipDirective],
+  imports: [TooltipDirective, NgClass],
   selector: 'app-header',
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

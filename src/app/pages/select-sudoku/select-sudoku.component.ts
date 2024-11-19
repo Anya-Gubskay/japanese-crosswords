@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Level} from '@enums/level.enum';
 import {Sudoku} from '@interfaces/sudoku.interface';
 import {SudokuService} from '@services/sudoku.service';
+import { CardComponent } from "../../components/card/card.component";
 
 @Component({
   selector: 'app-select-sudoku',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './select-sudoku.component.html',
   styleUrl: './select-sudoku.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

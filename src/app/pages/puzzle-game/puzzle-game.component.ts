@@ -1,13 +1,14 @@
+import { imagesWinnerByGame } from './../../constants/images-winner.constant';
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PuzzleService } from '@services/puzzle.service';
-import { CommonModule } from '@angular/common';
 import { Cell, Puzzle } from '@interfaces/puzzle.interface';
 import { WinningComponent } from '@components/winning/winning.component';
 import { Level } from '@enums/level.enum';
 import { MouseTrackerDirective } from '@directives/mouse-tracker.directive';
 import { ActionPanelComponent } from '@components/action-panel/action-panel.component';
 import { LocalstorageGamesService } from '@services/localstorage-games.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -37,6 +38,8 @@ export class PuzzleGameComponent implements OnInit {
   private isFilling: WritableSignal<boolean | null> = signal(null); // true для закраски, false для очистки
   private isMarking:  WritableSignal<boolean | null> = signal(null); // true для крестиков, false для удаления крестиков
   private isPainting:WritableSignal<boolean> = signal(false);
+
+  protected imgSrc = imagesWinnerByGame.puzzle;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {

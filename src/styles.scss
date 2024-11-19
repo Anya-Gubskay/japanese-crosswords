@@ -3,10 +3,35 @@
 @tailwind utilities;
 
 body {
-  background: url("assets/background.webp") center no-repeat;
-  background-size: cover; /* Картинка растягивается по высоте и ширине, сохраняя пропорции */
+  background: url("assets/images/background.webp") center no-repeat;
+  background-size: cover;
   margin: 0;
-  min-height: 100vh; /* Устанавливаем минимальную высоту на всю высоту окна браузера */
+  min-height: 100vh;
+
+  ::-webkit-scrollbar {
+    background-color: #fff;
+    width: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 1rem;
+    border: 0.2rem solid #fff;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #747478;
+    border-radius: 1rem;
+    border: 0.2rem solid #fff;
+  }
+
+  ::-webkit-scrollbar-button {
+    display:none;
+  }
 }
 
 .tooltip {
@@ -27,3 +52,12 @@ body {
   opacity: 1;
 }
 
+button svg {
+  fill: white;
+}
+
+button:hover {
+  svg {
+    fill: white
+  }
+}

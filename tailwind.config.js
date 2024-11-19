@@ -22,7 +22,7 @@ module.exports = {
 
       colors: {
         'custom-teal': 'rgb(96 165 250)',
-        'soft-pink': 'rgb(245 174 166)',
+        'soft-pink': 'rgb(163 142 222)',
         'custom-grey': '#d3d3d3',
         'custom-blue': '#f0f8ff',
         'success': '#48bb78',
@@ -30,5 +30,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [  ],
 };
