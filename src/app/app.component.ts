@@ -1,6 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '@components/header/header.component';
+
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +16,7 @@ import { HeaderComponent } from '@components/header/header.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-    // Блокируем масштабирование при жестах на тачпаде
+  // Блокируем масштабирование при жестах на тачпаде
   @HostListener('wheel', ['$event'])
   onWheel(event: WheelEvent): void {
     if (event.ctrlKey) {
