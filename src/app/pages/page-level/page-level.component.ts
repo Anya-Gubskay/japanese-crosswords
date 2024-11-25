@@ -2,7 +2,6 @@ import { CardComponent } from '@components/card/card.component';
 import { videosLevel } from '@constants/videos-level.constant';
 import { Level } from '@enums/level.enum';
 import { setVideoAutoplay } from '@utils/video-autoplay';
-
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -14,12 +13,11 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-page-level',
-  standalone: true,
-  imports: [CardComponent, CommonModule],
-  templateUrl: './page-level.component.html',
-  styleUrl: './page-level.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-page-level',
+    imports: [CardComponent, CommonModule],
+    templateUrl: './page-level.component.html',
+    styleUrl: './page-level.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageLevelComponent implements OnInit {
   private router = inject(Router);

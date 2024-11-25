@@ -20,17 +20,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { imagesWinnerByGame } from './../../constants/images-winner.constant';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
-    WinningComponent,
-    MouseTrackerDirective,
-    ActionPanelComponent,
-  ],
-  selector: 'app-puzzle-game',
-  templateUrl: './puzzle-game.component.html',
-  styleUrls: ['./puzzle-game.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        WinningComponent,
+        MouseTrackerDirective,
+        ActionPanelComponent,
+    ],
+    selector: 'app-puzzle-game',
+    templateUrl: './puzzle-game.component.html',
+    styleUrls: ['./puzzle-game.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PuzzleGameComponent implements OnInit {
   private route = inject(ActivatedRoute);

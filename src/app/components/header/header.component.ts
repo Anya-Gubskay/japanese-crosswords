@@ -12,11 +12,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
-  standalone: true,
-  imports: [TooltipDirective, NgClass],
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [TooltipDirective, NgClass],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   private router = inject(Router);

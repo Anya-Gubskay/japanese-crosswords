@@ -1,10 +1,10 @@
 @if (puzzle) {
-  <div class="container mx-auto flex flex-col items-center justify-center">
-    <div class="overflow-auto rounded-lg bg-white p-6 shadow-lg">
+  <div class="container flex flex-col items-center justify-center mx-auto">
+    <div class="p-6 overflow-auto bg-white rounded-lg shadow-lg">
       @if (isSolved()) {
         <app-winning [imgSrc]="imgSrc"></app-winning>
       }
-      <div class="mb-4 flex h-10 justify-center">
+      <div class="flex justify-center h-10 mb-4">
         <h2
           class="text-4xl font-bold transition-opacity duration-1000 {{
             puzzle.classColorText
@@ -19,7 +19,7 @@
       </div>
 
       <table
-        class="border-collapse text-sm"
+        class="text-sm border-collapse"
         [ngClass]="puzzle.textSizeClass ? puzzle.textSizeClass : 'text-base'"
       >
         <!-- Подсказки по столбцам -->
@@ -37,18 +37,17 @@
                 }}"
                 [ngClass]="{ '!bg-custom-blue': isHighlightedCol(colIndex) }"
               >
+              @let indexHintCol = puzzle.colHints[colIdx][rowIndex]; 
+              
                 @if (
-                  puzzle.colHints[colIdx][rowIndex] !== undefined &&
-                  puzzle.colHints[colIdx][rowIndex]
+                  indexHintCol !== undefined && indexHintCol
                 ) {
                   @if (isColumnSolved(colIdx) && !isSolved()) {
                     <ng-container
                       *ngTemplateOutlet="crossTemplate"
                     ></ng-container>
                   }
-                  <span class="relative z-10">{{
-                    puzzle.colHints[colIdx][rowIndex]
-                  }}</span>
+                  <span class="relative z-10">{{indexHintCol}}</span>
                 }
               </td>
             }
@@ -70,9 +69,12 @@
                 }}"
                 [ngClass]="{ '!bg-custom-blue': isHighlightedRow(rowIndex) }"
               >
+              
+              @let indexHintRow = puzzle.rowHints[rowIndex][rowHintIdx]; 
+              
                 @if (
-                  puzzle.rowHints[rowIndex][rowHintIdx] !== undefined &&
-                  puzzle.rowHints[rowIndex][rowHintIdx]
+                  indexHintRow !== undefined &&
+                  indexHintRow
                 ) {
                   @if (isRowSolved(rowIndex) && !isSolved()) {
                     <ng-container
@@ -80,7 +82,7 @@
                     ></ng-container>
                   }
                   <span class="relative z-10">{{
-                    puzzle.rowHints[rowIndex][rowHintIdx]
+                    indexHintRow
                   }}</span>
                 }
               </td>
@@ -95,7 +97,7 @@
                 (touchstart)="onTouchStart(rowIndex, colIndex, $event)"
                 (touchend)="onTouchEnd()"
                 (mousemove)="onMouseMove(rowIndex, colIndex)"
-                class="relative cursor-pointer select-none border border-gray-400 text-center"
+                class="relative text-center border border-gray-400 cursor-pointer select-none"
                 (contextmenu)="$event.preventDefault()"
                 [ngClass]="{
                   'border-r-4':
@@ -114,7 +116,7 @@
                       'border-black-700 border-2': isSolved(),
                     }"
                     [class]="isSolved() ? puzzle.classBackground : ''"
-                    class="h-full w-full transition-all duration-500"
+                    class="w-full h-full transition-all duration-500"
                     [ngStyle]="{
                       'transition-delay': isSolved()
                         ? getDelay(rowIndex, colIndex) + 'ms'
@@ -152,7 +154,7 @@
 }
 <ng-template #crossTemplate>
   <div
-    class="absolute left-0 top-0 h-full w-full outline outline-1 outline-red-500"
+    class="absolute top-0 left-0 w-full h-full outline outline-1 outline-red-500"
   >
     <svg viewBox="0 0 100 100" class="cross">
       <line x1="0" y1="0" x2="100" y2="100" stroke="red" stroke-width="3" />

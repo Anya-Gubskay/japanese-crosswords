@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import {CardComponent} from '@components/card/card.component';
 
 @Component({
-  standalone: true,
-  imports: [CardComponent],
-  selector: 'app-start-screen',
-  templateUrl: './start-screen.component.html',
-  styleUrls: ['./start-screen.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [CardComponent],
+    selector: 'app-start-screen',
+    templateUrl: './start-screen.component.html',
+    styleUrls: ['./start-screen.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StartScreenComponent {
   private router = inject(Router);
