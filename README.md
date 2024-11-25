@@ -1,4 +1,4 @@
-# 🀄 Angular Japanase games
+# 🀄 Angular Japanese games
 
 **Japanese games** is a Japanese board game created using Angular. They are designed to be lightweight, responsive and user-friendly, providing a fun experience for players of all ages.
 
