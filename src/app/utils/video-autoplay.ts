@@ -5,7 +5,7 @@ export function setVideoAutoplay() {
     video.autoplay = true;
     video.loop = true;
     video.play().catch(error => {
-      console.error("Автоматическое воспроизведение не удалось:", error);
+      console.log("Автоматическое воспроизведение не удалось:", error);
     });
   });
 }

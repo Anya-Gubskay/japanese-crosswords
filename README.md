@@ -1,28 +1,80 @@
-# JapanaseCrossword
+# 🀄 Angular Japanase games
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+**Japanese games** is a Japanese board game created using Angular. They are designed to be lightweight, responsive and user-friendly, providing a fun experience for players of all ages.
+
+---
+
+## 🚀 Live Demo
+
+Check out the live version of the app here:  
+👉 [https://japanese-crosswords.web.app](https://japanese-crosswords.web.app)  
+
+---
+
+## 🛠️ Features
+
+- 🎮 **Easy Controls**: Intuitive and easy-to-learn controls for all players.
+- 🎨 **Japanese-Chinese Design**: A unique design inspired by Japanese and Chinese cultures, enhancing the game's atmosphere.
+- 💾 **Save Game Progress**: Game progress is automatically saved, even if the page is reloaded.
+- 📱 **Interactive Videos**: Each level selection is accompanied by atmospheric and engaging videos.
+- 🌐 **Hints System**: Integrated tips to help players complete puzzles faster.
 
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📦 Installation
 
-## Code scaffolding
+To run the project locally, follow these steps:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Anya-Gubskay/japanese-crosswords.git
+   cd japanase-crossword
+ 2. **Install dependencies:**
+    ```bash
+    npm install
 
-## Build
+ 3. **Run the development server:**
+    ```bash
+    ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ 4. Open your browser and navigate to http://localhost:4200/.
 
-## Running unit tests
+ ## 🏗️ Build
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ To build the project for production:
 
-## Running end-to-end tests
+    ng build --prod
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The production-ready files will be stored in the dist/browser.
 
-## Further help
+## 🧪 Testing
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  **Unit Tests**
+
+  Run unit tests with:
+ 
+    ng test
+
+## 🎨 Tech Stack
+
+- **Frontend**: Angular 19, Tailwind CSS
+- **State Management**: Signals (introduced in Angular 16)
+
+## 📚 Folder Structure
+
+The project is organized in the following structure to ensure modularity and maintainability:
+
+```plaintext
+src/
+├── app/
+│   ├── components/     # Reusable components
+│   ├── constants/      # Constants
+│   ├── directives/     # Custom directives
+│   ├── enums/          # Enums for defining fixed values
+│   ├── interfaces/     # TypeScript interfaces
+│   ├── pages/          # All application pages
+│   ├── services/       # Application services
+│   └── utils/          # Utility functions
+├── assets/             # Static assets (images, icons, videos, etc.)
+   
