@@ -8,7 +8,6 @@
 
 Check out the live version of the app here:  
 👉 [https://japanese-crosswords.web.app](https://japanese-crosswords.web.app)  
-
 ---
 
 ## 🛠️ Features
@@ -27,17 +26,18 @@ Check out the live version of the app here:
 To run the project locally, follow these steps:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/Anya-Gubskay/japanese-crosswords.git
-   cd japanase-crossword
+   cd japanese-games
  2. **Install dependencies:**
+
     ```bash
     npm install
-
  3. **Run the development server:**
+ 
     ```bash
     ng serve
-
  4. Open your browser and navigate to http://localhost:4200/.
 
  ## 🏗️ Build
