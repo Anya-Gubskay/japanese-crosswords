@@ -112,7 +112,10 @@ export class SudokuGameComponent implements OnInit {
       if (cell.value && !cell.isFixed) {
         this.clearCellValue(row, col);
       }
-      if(this.selectedCell()?.row === row && this.selectedCell()?.col === col) {
+      if (
+        this.selectedCell()?.row === row &&
+        this.selectedCell()?.col === col
+      ) {
         this.selectedCell.set(null);
         return;
       }
