@@ -37,11 +37,11 @@ export class PuzzleGameComponent implements OnInit {
   private puzzleService = inject(PuzzleService);
   private localstorageGamesService = inject(LocalstorageGamesService);
 
-  protected puzzle!: Puzzle;
-  protected isSolved: WritableSignal<boolean> = signal(false);
-  protected level: WritableSignal<Level> = signal(Level.Easy);
-  protected grid: WritableSignal<Cell[][]> = signal([]);
-  protected completionMessage: WritableSignal<string> = signal('');
+  public puzzle!: Puzzle;
+  public isSolved: WritableSignal<boolean> = signal(false);
+  public level: WritableSignal<Level> = signal(Level.Easy);
+  public grid: WritableSignal<Cell[][]> = signal([]);
+  public completionMessage: WritableSignal<string> = signal('');
 
   private highlightedRow: WritableSignal<number | null> = signal(null);
   private highlightedCol: WritableSignal<number | null> = signal(null);
@@ -82,11 +82,7 @@ export class PuzzleGameComponent implements OnInit {
     }
   }
 
-  protected onMouseDown(
-    row: number,
-    col: number,
-    event: MouseEvent | TouchEvent,
-  ) {
+  public onMouseDown(row: number, col: number, event: MouseEvent | TouchEvent) {
     event.preventDefault(); // Предотвращаем стандартное поведение
 
     if (this.isSolved()) return;
@@ -195,7 +191,7 @@ export class PuzzleGameComponent implements OnInit {
     );
   }
 
-  protected restartGame(): void {
+  public restartGame(): void {
     if (!this.puzzle) return;
     this.completionMessage.set('');
     this.isSolved.set(false);
