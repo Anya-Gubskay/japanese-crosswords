@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
 git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(ts|html)$' | xargs -I{} npx prettier --write {}
+
+git diff --name-only | xargs git add
