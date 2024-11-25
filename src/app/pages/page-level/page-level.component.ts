@@ -3,6 +3,7 @@ import { videosLevel } from '@constants/videos-level.constant';
 import { Level } from '@enums/level.enum';
 import { setVideoAutoplay } from '@utils/video-autoplay';
 
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,7 +12,6 @@ import {
   signal,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-page-level',

@@ -18,7 +18,10 @@ export class PreloadService {
   }
 
   private saveCache(): void {
-    localStorage.setItem('preloadedResources', JSON.stringify([...this.preloadedResources]));
+    localStorage.setItem(
+      'preloadedResources',
+      JSON.stringify([...this.preloadedResources]),
+    );
   }
 
   private preloadImage(src: string): Promise<void> {
@@ -56,9 +59,8 @@ export class PreloadService {
         .catch((err) => reject(err));
     });
   }
-  
 
- public preloadAll(resources: string[]): Promise<void[]> {
+  public preloadAll(resources: string[]): Promise<void[]> {
     return Promise.all(
       resources.map((src) => {
         if (src.endsWith('.mp4') || src.endsWith('.webm')) {
@@ -66,7 +68,7 @@ export class PreloadService {
         } else {
           return this.preloadImage(src);
         }
-      })
+      }),
     );
   }
 }

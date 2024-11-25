@@ -1,4 +1,6 @@
 import { HeaderComponent } from '@components/header/header.component';
+import { preloadResources } from '@constants/preload-resources';
+import { PreloadService } from '@services/preload.service';
 
 import {
   ChangeDetectionStrategy,
@@ -9,9 +11,6 @@ import {
   signal,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-import { preloadResources } from '@constants/preload-resources';
-import { PreloadService } from '@services/preload.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +23,7 @@ import { PreloadService } from '@services/preload.service';
 export class AppComponent {
   preloadService = inject(PreloadService);
 
-  protected isLoaded = signal<boolean>(false)
+  protected isLoaded = signal<boolean>(false);
 
   // Блокируем масштабирование при жестах на тачпаде
   @HostListener('wheel', ['$event'])
@@ -35,10 +34,13 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-      this.preloadService.preloadAll(preloadResources).then(() => {
+    this.preloadService
+      .preloadAll(preloadResources)
+      .then(() => {
         console.log('Все ресурсы загружены и кэшированы');
         this.isLoaded.set(true);
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.error('Ошибка загрузки ресурсов:', err);
       });
   }
