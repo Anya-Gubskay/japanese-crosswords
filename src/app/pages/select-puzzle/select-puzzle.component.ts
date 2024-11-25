@@ -19,11 +19,11 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-    imports: [CommonModule, CardComponent, SimplebarAngularModule],
-    selector: 'app-select-puzzle',
-    templateUrl: './select-puzzle.component.html',
-    styleUrls: ['./select-puzzle.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [CommonModule, CardComponent, SimplebarAngularModule],
+  selector: 'app-select-puzzle',
+  templateUrl: './select-puzzle.component.html',
+  styleUrls: ['./select-puzzle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectPuzzleComponent implements OnInit {
   protected puzzles: WritableSignal<Puzzle[]> = signal([]);

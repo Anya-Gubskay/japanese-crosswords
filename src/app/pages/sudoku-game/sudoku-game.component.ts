@@ -19,11 +19,11 @@ import {
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
-    imports: [CommonModule, WinningComponent, ActionPanelComponent],
-    selector: 'app-sudoku-game',
-    templateUrl: './sudoku-game.component.html',
-    styleUrls: ['./sudoku-game.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [CommonModule, WinningComponent, ActionPanelComponent],
+  selector: 'app-sudoku-game',
+  templateUrl: './sudoku-game.component.html',
+  styleUrls: ['./sudoku-game.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SudokuGameComponent implements OnInit {
   private route = inject(ActivatedRoute);

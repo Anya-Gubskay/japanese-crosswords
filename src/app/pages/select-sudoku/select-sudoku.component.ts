@@ -16,11 +16,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CardComponent } from '../../components/card/card.component';
 
 @Component({
-    selector: 'app-select-sudoku',
-    imports: [CommonModule, CardComponent],
-    templateUrl: './select-sudoku.component.html',
-    styleUrl: './select-sudoku.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-select-sudoku',
+  imports: [CommonModule, CardComponent],
+  templateUrl: './select-sudoku.component.html',
+  styleUrl: './select-sudoku.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectSudokuComponent implements OnInit {
   protected sudoku: WritableSignal<Sudoku[]> = signal([]);
